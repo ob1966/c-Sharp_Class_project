@@ -20,6 +20,18 @@ public partial class SignIn : System.Web.UI.Page
 
     protected void BtSignIn_Click(object sender, EventArgs e)
     {
-
+        SQLSignIn signInRequest = new SQLSignIn(TbUserName.Text, TbPassword.Text);
+        signInRequest.ExecuteSproc();
+        if (signInRequest.IsSuccessful)
+        {
+            User currentUser = new User(TbUserName.Text);
+            currentUser.IsLoggedIn = true;
+            Session["AuthorizedUser"] = currentUser;
+        }
+        else
+        {
+            LbtRequestLogin_Click(LbtRequestLogin, EventArgs.Empty);
+        }
     }
+
 }

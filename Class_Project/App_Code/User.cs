@@ -10,11 +10,13 @@ using System.Web;
 [Serializable]
 public class User
 {
-    string userName;
-    public User()
+    private string userName;
+    private bool isLoggedIn = false;
+    public User(string user)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        UserName = user;
     }
+
+    public string UserName { get => userName; private set => userName = value; }
+    public bool IsLoggedIn { get => isLoggedIn; set => isLoggedIn = value; }
 }

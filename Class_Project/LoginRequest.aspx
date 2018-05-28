@@ -16,12 +16,10 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TbLoginName" runat="server"></asp:TextBox>
     <br />
-
     <asp:ListBox ID="ListBox2" runat="server" Height="39px">
         <asp:ListItem>New Account</asp:ListItem>
         <asp:ListItem>Reactivate Account</asp:ListItem>
     </asp:ListBox>
-
     <br />
     <asp:Label ID="LbNeedByDate" runat="server" Text="Date Needed By"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;

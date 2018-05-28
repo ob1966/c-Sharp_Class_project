@@ -8,12 +8,13 @@ using System.Web;
 /// <summary>
 /// Summary description for SqlControl
 /// </summary>
-public abstract class SqlControl
+public abstract class SqlControler
 {
     private string connectionString;
     private SqlConnection dbConnection;
+    private SqlCommand command = new SqlCommand();
 
-    public SqlControl()
+    public SqlControler()
     {
         ConnectionString = WebConfigurationManager.ConnectionStrings["ConnStringLocalDB"].ConnectionString;
         DBConnection = new SqlConnection(ConnectionString);
@@ -26,11 +27,13 @@ public abstract class SqlControl
     }
 
     protected SqlConnection DBConnection { get => dbConnection; private set => dbConnection = value; }
+    protected SqlCommand Command { get => command; set => command = value; }
 
     public abstract void ExecuteSproc();
+    protected abstract void SetCommand();
 }
 
-public class SQLLoginRequest : SqlControl
+public class SQLLoginRequest : SqlControler
 {
     private int sqlOutput = 0;
     private string name;
@@ -39,7 +42,6 @@ public class SQLLoginRequest : SqlControl
     private string neworactive;
     private string reason;
     private string dateneededby;
-    SqlCommand command = new SqlCommand();
 
     public SQLLoginRequest(string name, string email, string username, string neworactive, string reason, string dateneededby)
     {
@@ -51,12 +53,14 @@ public class SQLLoginRequest : SqlControl
         this.dateneededby = dateneededby;
         SetCommand();
     }
+
     public override void ExecuteSproc()
     {
         this.DBConnection.Open();
         try
         {
-            command.ExecuteNonQuery();
+            Command.ExecuteNonQuery();
+
         }
         catch(Exception e)
         {
@@ -68,17 +72,66 @@ public class SQLLoginRequest : SqlControl
         }
     }
 
-    private void SetCommand()
+    protected override void SetCommand()
     {
-        command.CommandText = "EXEC [dbo].[pInsLoginRequest] @sqlOutput, @name, @emailAddress, @loginName, @neworactive, @reasonForAccess, @dateneededby";
-        command.Connection = DBConnection;
-        command.Parameters.AddWithValue("@sqlOutput", sqlOutput);
-        command.Parameters.AddWithValue("@name", name);
-        command.Parameters.AddWithValue("@emailAddress", email);
-        command.Parameters.AddWithValue("@loginName", username);
-        command.Parameters.AddWithValue("@neworactive", neworactive);
-        command.Parameters.AddWithValue("@reasonForAccess", reason);
-        command.Parameters.AddWithValue("@dateneededby", dateneededby);
+        Command.CommandText = @"EXEC [dbo].[pInsLoginRequest] @loginid output, @name, @emailAddress, @loginName, @neworactive, @reasonForAccess, @dateneededby";
+        Command.Connection = DBConnection;
+        Command.Parameters.AddWithValue("@loginid", sqlOutput); //SQL output param
+        Command.Parameters[0].Direction = System.Data.ParameterDirection.Output;
+        Command.Parameters.AddWithValue("@name", name);
+        Command.Parameters.AddWithValue("@emailAddress", email);
+        Command.Parameters.AddWithValue("@loginName", username);
+        Command.Parameters.AddWithValue("@neworactive", neworactive);
+        Command.Parameters.AddWithValue("@reasonForAccess", reason);
+        Command.Parameters.AddWithValue("@dateneededby", dateneededby);
+        return;
+    }
+}
+
+public class SQLSignIn : SqlControler
+{
+    private string login;
+    private string password;
+    private int studentid = 0;
+    private bool isSuccessful = false;
+
+
+    public SQLSignIn(string login, string password)
+    {
+        this.login = login;
+        this.password = password;
+        SetCommand();
+    }
+
+    public bool IsSuccessful { get => isSuccessful; private set => isSuccessful = value; }
+
+    public override void ExecuteSproc()
+    {
+        this.DBConnection.Open();
+        try
+        {
+            Command.ExecuteNonQuery();
+            if ((int)Command.Parameters["@studentid"].Value > 0) IsSuccessful = true;
+
+        }
+        catch (Exception e)
+        {
+
+        }
+        finally
+        {
+            this.DBConnection.Close();
+        }
+    }
+
+    protected override void SetCommand()
+    {
+        Command.CommandText = @"EXEC [dbo].[pSelLoginIdByLoginAndPassword] @login, @password, @studentid output";
+        Command.Connection = DBConnection;
+        Command.Parameters.AddWithValue("@login", login);
+        Command.Parameters.AddWithValue("@password", password);
+        Command.Parameters.AddWithValue("@studentid",studentid); //SQL output param
+        Command.Parameters[2].Direction = System.Data.ParameterDirection.Output;
         return;
     }
 }
