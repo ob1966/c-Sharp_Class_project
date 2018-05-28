@@ -11,4 +11,10 @@ public partial class LoginRequest : System.Web.UI.Page
     {
 
     }
+
+    protected void TbtSubmitRequest_Click(object sender, EventArgs e)
+    {
+        SQLLoginRequest request = new SQLLoginRequest(TbUserName.Text, TbEmail.Text, TbLoginName.Text, "new", TbMessage.Text, TbDatePicker.Text);
+        request.ExecuteSproc();
+    }
 }

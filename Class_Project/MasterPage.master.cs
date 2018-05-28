@@ -12,31 +12,31 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     }
 
-    protected void lbtHome_Click(object sender, EventArgs e)
+    protected void LbtHome_Click(object sender, EventArgs e)
     {
         String URL = "~/Home.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
     }
 
-    protected void lbtSignIn_Click(object sender, EventArgs e)
+    protected void LbtSignIn_Click(object sender, EventArgs e)
     {
         String URL = "~/SignIn.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
     }
 
-    protected void lbtClasses_Click(object sender, EventArgs e)
+    protected void LbtClasses_Click(object sender, EventArgs e)
     {
         String URL = "~/Classes.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
     }
 
-    protected void lbtRegistration_Click(object sender, EventArgs e)
+    protected void LbtRegistration_Click(object sender, EventArgs e)
     {
         String URL = "~/Registration.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
     }
 
-    protected void lbtMyClasses_Click(object sender, EventArgs e)
+    protected void LbtMyClasses_Click(object sender, EventArgs e)
     {
         String URL = "~/MyClasses.aspx"; // Name the content file to load
         Response.Redirect(URL, false);

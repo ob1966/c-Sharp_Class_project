@@ -12,15 +12,15 @@
     <form id="form1" runat="server">
         <div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbtHome" runat="server" OnClick="lbtHome_Click">Home</asp:LinkButton>
+            <asp:LinkButton ID="LbtHome" runat="server" OnClick="LbtHome_Click">Home</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbtSignIn" runat="server" OnClick="lbtSignIn_Click">Sign In</asp:LinkButton>
+            <asp:LinkButton ID="LbtSignIn" runat="server" OnClick="LbtSignIn_Click">Sign In</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbtClasses" runat="server" OnClick="lbtClasses_Click">Classes</asp:LinkButton>
+            <asp:LinkButton ID="LbtClasses" runat="server" OnClick="LbtClasses_Click">Classes</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbtRegistration" runat="server" OnClick="lbtRegistration_Click">Registration</asp:LinkButton>
+            <asp:LinkButton ID="LbtRegistration" runat="server" OnClick="LbtRegistration_Click">Registration</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbtMyClasses" runat="server" OnClick="lbtMyClasses_Click">My Classes</asp:LinkButton>
+            <asp:LinkButton ID="LbtMyClasses" runat="server" OnClick="LbtMyClasses_Click">My Classes</asp:LinkButton>
         </div>
         <br />
         <div>
