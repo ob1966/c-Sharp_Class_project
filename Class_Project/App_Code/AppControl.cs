@@ -10,9 +10,9 @@ public static class AppControl
 {
     public static bool ValidateUserSignInRequest(string userName, string password)
     {
-        SQLSignIn validateUserSignIn = new SQLSignIn(userName, password);
-        validateUserSignIn.ExecuteSproc();
-        if (validateUserSignIn.IsSuccessful)
+        SQLSignIn signInAttempt = new SQLSignIn(userName, password);
+        signInAttempt.ExecuteSproc();
+        if (signInAttempt.IsSuccessful)
             return true;
         return false;
     }
@@ -26,9 +26,17 @@ public static class AppControl
 
     public static bool IsUserLoggedIn()
     {
-        if (HttpContext.Current.Session["AuthenticatedUser"] != null)
-            return (((User)HttpContext.Current.Session["AuthenticatedUser"]).IsLoggedIn);
+        if (IsThereAnActiveUserSession())
+        {
+            bool IsUserAuthenticated = ((User)HttpContext.Current.Session["AuthenticatedUser"]).IsLoggedIn;
+            if (IsUserAuthenticated) return true;
+        }
         return false;
+    }
 
+    private static bool IsThereAnActiveUserSession()
+    {
+        if (HttpContext.Current.Session["AuthenticatedUser"] != null) return true;
+        return false;
     }
 }

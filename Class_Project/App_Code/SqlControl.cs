@@ -8,13 +8,13 @@ using System.Web;
 /// <summary>
 /// Summary description for SqlControl
 /// </summary>
-public abstract class SqlControler
+public abstract class SqlController
 {
     private string connectionString;
     private SqlConnection dbConnection;
     private SqlCommand command = new SqlCommand();
 
-    public SqlControler()
+    public SqlController()
     {
         ConnectionString = WebConfigurationManager.ConnectionStrings["ConnStringLocalDB"].ConnectionString;
         DBConnection = new SqlConnection(ConnectionString);
@@ -33,7 +33,7 @@ public abstract class SqlControler
     protected abstract void SetCommand();
 }
 
-public class SQLLoginRequest : SqlControler
+public class SQLLoginRequest : SqlController
 {
     private int sqlOutput = 0;
     private string name;
@@ -88,7 +88,7 @@ public class SQLLoginRequest : SqlControler
     }
 }
 
-public class SQLSignIn : SqlControler
+public class SQLSignIn : SqlController
 {
     private string login;
     private string password;
