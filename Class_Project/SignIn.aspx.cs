@@ -20,17 +20,20 @@ public partial class SignIn : System.Web.UI.Page
 
     protected void BtSignIn_Click(object sender, EventArgs e)
     {
-        SQLSignIn signInRequest = new SQLSignIn(TbUserName.Text, TbPassword.Text);
-        signInRequest.ExecuteSproc();
-        if (signInRequest.IsSuccessful)
+        bool isValidUser = AppControl.ValidateUserSignInRequest(TbUserName.Text, TbPassword.Text);
+        if (isValidUser)
         {
-            User currentUser = new User(TbUserName.Text);
-            currentUser.IsLoggedIn = true;
-            Session["AuthorizedUser"] = currentUser;
+            AppControl.CreateUserSession(TbUserName.Text);
         }
         else
         {
             LbtRequestLogin_Click(LbtRequestLogin, EventArgs.Empty);
+        }
+
+        if (AppControl.IsUserLoggedIn())
+        {
+            String URL = "~/MyClasses.aspx";
+            Response.Redirect(URL, false);
         }
     }
 
