@@ -13,10 +13,20 @@ public abstract class SqlController
     private string connectionString;
     private SqlConnection dbConnection;
     private SqlCommand command = new SqlCommand();
+    private bool isUsingProdDB = false; //Set this manually for development or production.
+    protected bool isSuccessful = false;
 
     public SqlController()
     {
-        ConnectionString = WebConfigurationManager.ConnectionStrings["ConnStringLocalDB"].ConnectionString;
+        if (isUsingProdDB)
+        {
+            ConnectionString = WebConfigurationManager.ConnectionStrings["ClassDB"].ConnectionString;
+        }
+        else
+        {
+            ConnectionString = WebConfigurationManager.ConnectionStrings["DEVDB"].ConnectionString;
+        }
+
         DBConnection = new SqlConnection(ConnectionString);
     }
 
@@ -28,6 +38,7 @@ public abstract class SqlController
 
     protected SqlConnection DBConnection { get => dbConnection; private set => dbConnection = value; }
     protected SqlCommand Command { get => command; set => command = value; }
+    public bool IsSuccessful { get => isSuccessful; protected set => isSuccessful = value; }
 
     public abstract void ExecuteSproc();
     protected abstract void SetCommand();
@@ -42,6 +53,7 @@ public class SQLLoginRequest : SqlController
     private string neworactive;
     private string reason;
     private string dateneededby;
+
 
     public SQLLoginRequest(string name, string email, string username, string neworactive, string reason, string dateneededby)
     {
@@ -60,11 +72,12 @@ public class SQLLoginRequest : SqlController
         try
         {
             Command.ExecuteNonQuery();
+            IsSuccessful = true;
 
         }
-        catch(Exception e)
+        catch (Exception e)
         {
-            
+
         }
         finally
         {
@@ -93,7 +106,7 @@ public class SQLSignIn : SqlController
     private string login;
     private string password;
     private int studentid = 0;
-    private bool isSuccessful = false;
+
 
 
     public SQLSignIn(string login, string password)
@@ -102,8 +115,6 @@ public class SQLSignIn : SqlController
         this.password = password;
         SetCommand();
     }
-
-    public bool IsSuccessful { get => isSuccessful; private set => isSuccessful = value; }
 
     public override void ExecuteSproc()
     {
@@ -130,7 +141,7 @@ public class SQLSignIn : SqlController
         Command.Connection = DBConnection;
         Command.Parameters.AddWithValue("@login", login);
         Command.Parameters.AddWithValue("@password", password);
-        Command.Parameters.AddWithValue("@studentid",studentid); //SQL output param
+        Command.Parameters.AddWithValue("@studentid", studentid); //SQL output param
         Command.Parameters[2].Direction = System.Data.ParameterDirection.Output;
         return;
     }
