@@ -40,7 +40,7 @@ public abstract class SqlController
     protected SqlCommand Command { get => command; set => command = value; }
     public bool IsSuccessful { get => isSuccessful; protected set => isSuccessful = value; }
 
-    public abstract void ExecuteSproc();
+    public abstract void Execute();
     protected abstract void SetCommand();
 }
 
@@ -66,7 +66,7 @@ public class SQLLoginRequest : SqlController
         SetCommand();
     }
 
-    public override void ExecuteSproc()
+    public override void Execute()
     {
         this.DBConnection.Open();
         try
@@ -114,7 +114,7 @@ public class SQLSignIn : SqlController
         SetCommand();
     }
 
-    public override void ExecuteSproc()
+    public override void Execute()
     {
         this.DBConnection.Open();
         try
@@ -141,6 +141,44 @@ public class SQLSignIn : SqlController
         Command.Parameters.AddWithValue("@password", password);
         Command.Parameters.AddWithValue("@studentid", studentid); //SQL output param
         Command.Parameters[2].Direction = System.Data.ParameterDirection.Output;
+        return;
+    }
+}
+
+public class SQLClasses : SqlController
+{
+    private string classList;
+    public SQLClasses()
+    {
+        SetCommand();
+    }
+
+    public string ClassList { get => classList; private set => classList = value; }
+
+    public override void Execute()
+    {
+        this.DBConnection.Open();
+        try
+        {
+            SqlDataReader classResults = Command.ExecuteReader();
+            while(classResults.Read() ==  true)
+            {
+                classResults.
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+        finally
+        {
+            this.DBConnection.Close();
+        }
+    }
+
+    protected override void SetCommand()
+    {
+        Command.CommandText = @"SELECT ClassId, ClassName, ClassDate, ClassDescription FROM [dbo].[vClasses]";
         return;
     }
 }

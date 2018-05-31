@@ -11,7 +11,7 @@ public static class AppControl
     public static bool ValidateUserSignInRequest(string userName, string password)
     {
         SQLSignIn signInAttempt = new SQLSignIn(userName, password);
-        signInAttempt.ExecuteSproc();
+        signInAttempt.Execute();
         if (signInAttempt.IsSuccessful)
             return true;
         return false;

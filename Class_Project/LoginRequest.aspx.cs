@@ -17,7 +17,7 @@ public partial class LoginRequest : System.Web.UI.Page
         if (Page.IsValid)
         {
             SQLLoginRequest request = new SQLLoginRequest(TbUserName.Text, TbEmail.Text, TbLoginName.Text, RadioButtonListAccount.SelectedValue, TbMessage.Text, TbDatePicker.Text);
-            request.ExecuteSproc();
+            request.Execute();
             if (request.IsSuccessful)
             {
                 LbSuccessMessage.Text = "Request has been submitted";
