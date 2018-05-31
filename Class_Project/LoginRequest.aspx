@@ -40,14 +40,13 @@
         ForeColor="Red" Text="*">
     </asp:RequiredFieldValidator>
     <br />
-    <asp:RadioButtonList ID="RadioButtonListAccount" runat="server" RepeatDirection="Horizontal">
+    <asp:RadioButtonList ID="RadioButtonListAccount" runat="server" RepeatDirection="Horizontal" Height="19px" Width="143px">
         <asp:ListItem Selected="True">New</asp:ListItem>
         <asp:ListItem>Reactivate</asp:ListItem>
     </asp:RadioButtonList>
-    <br />
     <asp:Label ID="LbNeedByDate" runat="server" Text="Date Needed By"></asp:Label>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="TbDatePicker" runat="server"></asp:TextBox>
+    <br />
+&nbsp;<asp:TextBox ID="TbDatePicker" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
         ErrorMessage="Need By Date Required"
         ControlToValidate="TbDatePicker" CausesValidation="false"
@@ -56,7 +55,7 @@
     <br />
     <asp:Label ID="LbReason" runat="server" Text="Reason For Access"></asp:Label>
     <br />
-    <asp:TextBox ID="TbMessage" runat="server" MaxLength="50"></asp:TextBox>
+    <asp:TextBox ID="TbMessage" runat="server" MaxLength="50" Width="265px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
         ErrorMessage="Need By Date Required"
         ControlToValidate="TbMessage" CausesValidation="false"
