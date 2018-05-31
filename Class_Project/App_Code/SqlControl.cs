@@ -107,8 +107,6 @@ public class SQLSignIn : SqlController
     private string password;
     private int studentid = 0;
 
-
-
     public SQLSignIn(string login, string password)
     {
         this.login = login;
