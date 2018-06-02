@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,19 @@ public partial class MyClasses : System.Web.UI.Page
     {
         if (!AppControl.IsUserLoggedIn())
         {
-            String URL = "~/LoginRequest.aspx";
+            String URL = "~/SignIn.aspx";
             Response.Redirect(URL, false);
         }
+        else
+        {
+            int userId = ((User)Session["AuthenticatedUser"]).UserId;
+            DataTable myClasses = AppControl.RetrieveMyClasses(userId);
+            foreach (DataRow classRow in myClasses.Rows)
+            {
+                LbMyClasses.Text += "<p>" + classRow.Field<string>(0) + classRow.Field<string>(1) + classRow.Field<string>(2) + classRow.Field<string>(3) + "</p>";
+            }
+        }
+
+
     }
 }

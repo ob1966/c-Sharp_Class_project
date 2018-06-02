@@ -20,10 +20,10 @@ public partial class SignIn : System.Web.UI.Page
 
     protected void BtSignIn_Click(object sender, EventArgs e)
     {
-        bool isValidUser = AppControl.ValidateUserSignInRequest(TbUserName.Text, TbPassword.Text);
-        if (isValidUser)
+        SQLSignIn signRequest = AppControl.ValidateUserSignInRequest(TbUserName.Text, TbPassword.Text);
+        if (signRequest.IsSuccessful)
         {
-            AppControl.CreateUserSession(TbUserName.Text);
+            AppControl.CreateUserSession(signRequest.Login, signRequest.Studentid);
         }
         else
         {
