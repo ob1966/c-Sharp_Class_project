@@ -15,15 +15,12 @@ public partial class MyClasses : System.Web.UI.Page
             String URL = "~/SignIn.aspx";
             Response.Redirect(URL, false);
         }
-        else
-        {
-            int userId = ((User)Session["AuthenticatedUser"]).UserId;
-            DataTable myClasses = AppControl.RetrieveMyClasses(userId);
-            foreach (DataRow classRow in myClasses.Rows)
-            {
-                LbMyClasses.Text += "<p>" + classRow.Field<string>(0) + classRow.Field<string>(1) + classRow.Field<string>(2) + classRow.Field<string>(3) + "</p>";
-            }
-        }
+        //else
+        //{
+        //    int userId = ((User)Session["AuthenticatedUser"]).UserId;
+        //    DataTable myClasses = AppControl.RetrieveMyClasses(userId);
+
+        //}
 
 
     }

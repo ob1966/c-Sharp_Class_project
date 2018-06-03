@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="LoginRequest.aspx.cs" Inherits="LoginRequest" %>
+﻿<%@ Page Title="Login Request" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="LoginRequest.aspx.cs" Inherits="LoginRequest" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -15,7 +15,9 @@
         ControlToValidate="TbUserName" CausesValidation="false"
         ForeColor="Red" Text="*" SetFocusOnError="True">
     </asp:RequiredFieldValidator>
+
     <br />
+
     <asp:Label ID="LbEmail" runat="server" Text="Email"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TbEmail" runat="server"></asp:TextBox>
@@ -29,6 +31,7 @@
         ValidationExpression="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
         ErrorMessage="Must use a valid email address." Text="*"> <!-- Source: http://regexlib.com/Search.aspx?k=email&AspxAutoDetectCookieSupport=1 -->
     </asp:RegularExpressionValidator>
+
     <br />
 
     <asp:Label ID="LbLoginName" runat="server" Text="Login"></asp:Label>
@@ -39,31 +42,43 @@
         ControlToValidate="TbLoginName" CausesValidation="false"
         ForeColor="Red" Text="*">
     </asp:RequiredFieldValidator>
+
     <br />
+
     <asp:RadioButtonList ID="RadioButtonListAccount" runat="server" RepeatDirection="Horizontal" Height="19px" Width="143px">
         <asp:ListItem Selected="True">New</asp:ListItem>
         <asp:ListItem>Reactivate</asp:ListItem>
     </asp:RadioButtonList>
     <asp:Label ID="LbNeedByDate" runat="server" Text="Date Needed By"></asp:Label>
+
     <br />
-&nbsp;<asp:TextBox ID="TbDatePicker" runat="server"></asp:TextBox>
+
+    &nbsp;<asp:TextBox ID="TbDatePicker" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
         ErrorMessage="Need By Date Required"
         ControlToValidate="TbDatePicker" CausesValidation="false"
         ForeColor="Red" Text="*">
     </asp:RequiredFieldValidator>
+
     <br />
+
     <asp:Label ID="LbReason" runat="server" Text="Reason For Access"></asp:Label>
+
     <br />
+
     <asp:TextBox ID="TbMessage" runat="server" MaxLength="50" Width="265px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
         ErrorMessage="Need By Date Required"
         ControlToValidate="TbMessage" CausesValidation="false"
         ForeColor="Red" Text="*">
     </asp:RequiredFieldValidator>
+
     <br />
+
     <asp:LinkButton ID="TbtSubmitRequest" runat="server" OnClick="TbtSubmitRequest_Click">Submit Request</asp:LinkButton>
+
     <br />
+
     <asp:Label ID="LbSuccessMessage" runat="server"></asp:Label>
 </asp:Content>
 
