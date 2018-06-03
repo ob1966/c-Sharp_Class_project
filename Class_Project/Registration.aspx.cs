@@ -12,8 +12,8 @@ public partial class ClassRegistration : System.Web.UI.Page
     {
         if (!AppControl.IsUserLoggedIn())
         {
-            //String URL = "~/SignIn.aspx";
-            //Response.Redirect(URL, false);
+            String URL = "~/SignIn.aspx";
+            Response.Redirect(URL, false);
         }
     }
 
@@ -21,18 +21,20 @@ public partial class ClassRegistration : System.Web.UI.Page
     {
         HiddenFieldClassID.Value = TbClassID.Text;
         DataTable classData = AppControl.GetListOfClasses();
+        LbClass.Text = "";
         foreach (DataRow classRow in classData.Rows)
         {
-            if(TbClassID.Text == classRow.Field<string>(0))
+            if (TbClassID.Text == classRow.Field<string>(0))
             {
-                LbClass.Text += "<p>" + classRow.Field<string>(0) + classRow.Field<string>(1) + classRow.Field<string>(2) + classRow.Field<string>(3) + "</p>";
+                LbClass.Text += "<p>" + classRow.Field<string>(0) + " | " + classRow.Field<string>(1) + " | " + classRow.Field<string>(2) + " | " + classRow.Field<string>(3) + "</p>";
             }
         }
     }
 
     protected void BtRegister_Click(object sender, EventArgs e)
     {
-        AppControl.RegsiterForClass(Int32.Parse(HiddenFieldClassID.Value), ((User)Session["AuthenticatedUser"]).UserId);
+        if (LbClass.Text != "")
+            AppControl.RegsiterForClass(Int32.Parse(HiddenFieldClassID.Value), ((User)Session["AuthenticatedUser"]).UserId);
     }
 
 }

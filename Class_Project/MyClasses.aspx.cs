@@ -15,12 +15,12 @@ public partial class MyClasses : System.Web.UI.Page
             String URL = "~/SignIn.aspx";
             Response.Redirect(URL, false);
         }
-        //else
-        //{
-        //    int userId = ((User)Session["AuthenticatedUser"]).UserId;
-        //    DataTable myClasses = AppControl.RetrieveMyClasses(userId);
+        else
+        {
+            //int userId = ((User)Session["AuthenticatedUser"]).UserId;
+            //DataTable myClasses = AppControl.RetrieveMyClasses(userId);
 
-        //}
+        }
 
 
     }

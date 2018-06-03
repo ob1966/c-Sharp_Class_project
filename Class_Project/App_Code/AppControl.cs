@@ -20,6 +20,7 @@ public static class AppControl
     {
         User currentUser = new User(userName, userID) { IsLoggedIn = true };
         HttpContext.Current.Session["AuthenticatedUser"] = currentUser;
+        HttpContext.Current.Session["UserId"] = currentUser.UserId;
         return;
     }
 

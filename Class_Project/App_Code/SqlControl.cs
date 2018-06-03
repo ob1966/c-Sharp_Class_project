@@ -280,7 +280,7 @@ public class SQLGetMyClasses : SqlController
 
     protected override void SetCommand()
     {
-        Command.CommandText = @"SELECT ClassId, ClassName, ClassDate, ClassDescription FROM [dbo].[vClasses]";//@"SELECT ClassId, ClassName, ClassDate, ClassDescription FROM dbo.vClassesByStudents WHERE StudentId = " + StudentId.ToString();
+        Command.CommandText = @"SELECT ClassId, ClassName, ClassDate, ClassDescription FROM dbo.vClassesByStudents WHERE StudentId = " + StudentId.ToString();
         Command.Connection = DBConnection;
         return;
     }

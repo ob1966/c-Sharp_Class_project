@@ -41,4 +41,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         String URL = "~/MyClasses.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
     }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        HttpContext.Current.Session.Clear();
+    }
 }

@@ -37,3 +37,7 @@ p {
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
 }
+
+a:active {
+    color: forestgreen;
+}

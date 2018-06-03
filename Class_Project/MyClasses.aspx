@@ -19,7 +19,7 @@
     </asp:GridView>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RetrieveMyClasses" TypeName="AppControl">
         <SelectParameters>
-            <asp:FormParameter DefaultValue="0" FormField="AuthenticatedUser" Name="studentId" Type="Int32" />
+            <asp:SessionParameter DefaultValue="0" Name="studentId" SessionField="UserId" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>

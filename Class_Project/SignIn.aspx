@@ -36,6 +36,6 @@
     <br />
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:LinkButton ID="LbtRequestLogin" runat="server" OnClick="LbtRequestLogin_Click" CssClass="LinkButton">Request Login Account</asp:LinkButton>
+    <asp:LinkButton ID="LbtRequestLogin" runat="server" OnClick="LbtRequestLogin_Click" CssClass="LinkButton" CausesValidation="false">Request Login Account</asp:LinkButton>
 </asp:Content>
 

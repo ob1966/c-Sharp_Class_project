@@ -8,7 +8,7 @@
     <asp:ValidationSummary runat="server"
         HeaderText="There were errors on the page:"
         ForeColor="Red" />
-    <asp:Label ID="LbName" runat="server" Text="Name"></asp:Label>
+    <asp:Label ID="LbName" runat="server" Text="Name" CssClass="Label"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TbUserName" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
@@ -19,7 +19,7 @@
 
     <br />
 
-    <asp:Label ID="LbEmail" runat="server" Text="Email"></asp:Label>
+    <asp:Label ID="LbEmail" runat="server" Text="Email" CssClass="Label"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TbEmail" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
@@ -35,7 +35,7 @@
 
     <br />
 
-    <asp:Label ID="LbLoginName" runat="server" Text="Login"></asp:Label>
+    <asp:Label ID="LbLoginName" runat="server" Text="Login" Class="Label"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TbLoginName" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
@@ -46,24 +46,27 @@
 
     <br />
 
-    <asp:RadioButtonList ID="RadioButtonListAccount" runat="server" RepeatDirection="Horizontal" Height="19px" Width="143px">
+    <asp:RadioButtonList ID="RadioButtonListAccount" runat="server" RepeatDirection="Horizontal" Height="19px" Width="143px" CssClass="Label">
         <asp:ListItem Selected="True">New</asp:ListItem>
         <asp:ListItem>Reactivate</asp:ListItem>
     </asp:RadioButtonList>
-    <asp:Label ID="LbNeedByDate" runat="server" Text="Date Needed By"></asp:Label>
+    <asp:Label ID="LbNeedByDate" runat="server" Text="Date Needed By" CssClass="Label"></asp:Label>
+
+
+<asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px">
+    <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
+    <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
+    <OtherMonthDayStyle ForeColor="#999999" />
+    <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+    <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+    <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
+    <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+    <WeekendDayStyle BackColor="#CCCCFF" />
+    </asp:Calendar>
 
     <br />
 
-    &nbsp;<asp:TextBox ID="TbDatePicker" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-        ErrorMessage="Need By Date Required"
-        ControlToValidate="TbDatePicker" CausesValidation="false"
-        ForeColor="Red" Text="*">
-    </asp:RequiredFieldValidator>
-
-    <br />
-
-    <asp:Label ID="LbReason" runat="server" Text="Reason For Access"></asp:Label>
+    <asp:Label ID="LbReason" runat="server" Text="Reason For Access" Class="Label"></asp:Label>
 
     <br />
 
@@ -76,11 +79,11 @@
 
     <br />
 
-    <asp:LinkButton ID="TbtSubmitRequest" runat="server" OnClick="TbtSubmitRequest_Click">Submit Request</asp:LinkButton>
+    <asp:LinkButton ID="TbtSubmitRequest" runat="server" OnClick="TbtSubmitRequest_Click" CssClass="LinkButton">Submit Request</asp:LinkButton>
 
     <br />
-
     <asp:Label ID="LbSuccessMessage" runat="server"></asp:Label>
+
 </asp:Content>
 
 
