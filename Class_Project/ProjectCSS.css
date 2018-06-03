@@ -1,0 +1,39 @@
+﻿body {
+}
+
+h1 {
+    font-family: verdana;
+    font-size: 20px;
+    color: white;
+    background-color: #507CD1;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+    color: white;
+    background-color: #507CD1;
+}
+
+.Label {
+    font-family: verdana;
+}
+
+.Button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.LinkButton {
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}

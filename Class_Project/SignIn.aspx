@@ -1,30 +1,7 @@
 ﻿<%@ Page Title="Sign In" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SignIn.aspx.cs" Inherits="SignIn" Trace="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .Label {
-            font-family: verdana;
-        }
-
-        .Button {
-            background-color: blue;
-            border: none;
-            color: white;
-            padding: 10px 10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 12px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        .LinkButton {
-            color: blue;
-            font-family: 'Times New Roman', Times, serif;
-            font-style: italic;
-        }
-    </style>
+<link href="ProjectCSS.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
        <asp:ValidationSummary runat="server"

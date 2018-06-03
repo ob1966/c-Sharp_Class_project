@@ -12,8 +12,8 @@ public partial class ClassRegistration : System.Web.UI.Page
     {
         if (!AppControl.IsUserLoggedIn())
         {
-            String URL = "~/SignIn.aspx";
-            Response.Redirect(URL, false);
+            //String URL = "~/SignIn.aspx";
+            //Response.Redirect(URL, false);
         }
     }
 

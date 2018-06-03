@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Welcome" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style>
+    <style type="text/css">
         h1 {
             font-family: verdana;
             font-size: 20px;
