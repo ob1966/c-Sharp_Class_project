@@ -5,8 +5,17 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <p>Enter a class ID and find your class.</p>
+    <div>
+        <asp:ValidationSummary runat="server"
+            ForeColor="Red" />
+    </div>
+    <p>Enter a class ID number and find your class.</p>
     <asp:TextBox ID="TbClassID" runat="server" Width="26px"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+        ErrorMessage="Class ID Number Is Required"
+        ControlToValidate="TbClassID" CausesValidation="false"
+        ForeColor="Red" Text="*" SetFocusOnError="True">
+    </asp:RequiredFieldValidator>
     <br />
     <asp:Button ID="BtFindClass" runat="server" Text="Find Class" OnClick="BtFindClass_Click" Class="Button" />
     <asp:HiddenField ID="HiddenFieldClassID" runat="server" />

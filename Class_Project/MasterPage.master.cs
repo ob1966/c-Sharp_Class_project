@@ -9,7 +9,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (AppControl.IsUserLoggedIn())
+        {
+            LbtSignIn.Text = "Sign Out";
+        }
     }
 
     protected void LbtHome_Click(object sender, EventArgs e)
@@ -20,8 +23,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void LbtSignIn_Click(object sender, EventArgs e)
     {
-        String URL = "~/SignIn.aspx"; // Name the content file to load
-        Response.Redirect(URL, false);
+        if (!AppControl.IsUserLoggedIn())
+        {
+            String URL = "~/SignIn.aspx"; // Name the content file to load
+            Response.Redirect(URL, false);
+        }
+        else
+        {
+            HttpContext.Current.Session.Clear();
+            String URL = "~/Home.aspx"; // Name the content file to load
+            Response.Redirect(URL, false);
+        }
+
     }
 
     protected void LbtClasses_Click(object sender, EventArgs e)
@@ -40,10 +53,5 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         String URL = "~/MyClasses.aspx"; // Name the content file to load
         Response.Redirect(URL, false);
-    }
-
-    protected void LinkButton1_Click(object sender, EventArgs e)
-    {
-        HttpContext.Current.Session.Clear();
     }
 }

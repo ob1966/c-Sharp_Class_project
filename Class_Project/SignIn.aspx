@@ -1,41 +1,42 @@
 ﻿<%@ Page Title="Sign In" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SignIn.aspx.cs" Inherits="SignIn" Trace="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-<link href="ProjectCSS.css" rel="stylesheet" type="text/css" />
+    <link href="ProjectCSS.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-       <asp:ValidationSummary runat="server"
-        HeaderText="There were errors on the page:"
+    <asp:ValidationSummary runat="server"
+        HeaderText="There is missing from yur request:"
         ForeColor="Red" />
+    <div runat="server" id="main">
+        <asp:Label ID="LbUserName" runat="server" Text="User Name" CssClass="Label"></asp:Label>
+        &nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TbUserName" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+            ErrorMessage="User Name Is Required"
+            ControlToValidate="TbUserName" CausesValidation="false"
+            ForeColor="Red" Text="*" SetFocusOnError="True">
+        </asp:RequiredFieldValidator>
 
-    <asp:Label ID="LbUserName" runat="server" Text="User Name" CssClass="Label"></asp:Label>
-    &nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="TbUserName" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-        ErrorMessage="User Name Is Required"
-        ControlToValidate="TbUserName" CausesValidation="false"
-        ForeColor="Red" Text="*" SetFocusOnError="True">
-    </asp:RequiredFieldValidator>
+        <br />
 
-    <br />
-
-    <asp:Label ID="LbPassword" runat="server" Text="Password" CssClass="Label"></asp:Label>
-    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="TbPassword" runat="server"></asp:TextBox>
+        <asp:Label ID="LbPassword" runat="server" Text="Password" CssClass="Label"></asp:Label>
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TbPassword" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-        ErrorMessage="A password is required"
-        ControlToValidate="TbPassword" CausesValidation="false"
-        ForeColor="Red" Text="*" SetFocusOnError="True">
-    </asp:RequiredFieldValidator>
+            ErrorMessage="A password is required"
+            ControlToValidate="TbPassword" CausesValidation="false"
+            ForeColor="Red" Text="*" SetFocusOnError="True">
+        </asp:RequiredFieldValidator>
 
-    <br />
+        <br />
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="BtSignIn" runat="server" Text="Sign In" OnClick="BtSignIn_Click" CssClass="Button" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BtSignIn" runat="server" Text="Sign In" OnClick="BtSignIn_Click" CssClass="Button" />
 
-    <br />
+        <br />
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:LinkButton ID="LbtRequestLogin" runat="server" OnClick="LbtRequestLogin_Click" CssClass="LinkButton" CausesValidation="false">Request Login Account</asp:LinkButton>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="LbtRequestLogin" runat="server" OnClick="LbtRequestLogin_Click" CssClass="LinkButton" CausesValidation="false">Request Login Account</asp:LinkButton>
+    </div>
 </asp:Content>
 

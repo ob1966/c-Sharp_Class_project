@@ -17,11 +17,9 @@ public partial class MyClasses : System.Web.UI.Page
         }
         else
         {
-            //int userId = ((User)Session["AuthenticatedUser"]).UserId;
-            //DataTable myClasses = AppControl.RetrieveMyClasses(userId);
-
+            int userId = ((User)Session["AuthenticatedUser"]).UserId;
+            DataTable myClasses = AppControl.RetrieveMyClasses(userId);
+            if (myClasses.Rows.Count < 1) LbNoClasses.Text = "(No Registered Classes)";
         }
-
-
     }
 }

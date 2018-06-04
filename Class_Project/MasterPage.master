@@ -23,7 +23,6 @@
             <asp:LinkButton ID="LbtRegistration" runat="server" OnClick="LbtRegistration_Click" CausesValidation="false">Registration</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:LinkButton ID="LbtMyClasses" runat="server" OnClick="LbtMyClasses_Click" CausesValidation="false">My Classes</asp:LinkButton>
-            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
         </div>
         <br />
         <div>

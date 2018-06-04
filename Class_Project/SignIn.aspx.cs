@@ -9,6 +9,10 @@ public partial class SignIn : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (AppControl.IsUserLoggedIn())
+        {
+            main.Visible = false;
+        }
 
     }
 
@@ -24,16 +28,12 @@ public partial class SignIn : System.Web.UI.Page
         if (signRequest.IsSuccessful)
         {
             AppControl.CreateUserSession(signRequest.Login, signRequest.Studentid);
+            String URL = "~/MyClasses.aspx";
+            Response.Redirect(URL, false);
         }
         else
         {
             LbtRequestLogin_Click(LbtRequestLogin, EventArgs.Empty);
-        }
-
-        if (AppControl.IsUserLoggedIn())
-        {
-            String URL = "~/MyClasses.aspx";
-            Response.Redirect(URL, false);
         }
     }
 

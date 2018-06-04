@@ -4,6 +4,7 @@
     <link href="ProjectCSS.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Label ID="LbClassSchedule" runat="server" Text="Class Schedule" CssClass="Label"></asp:Label>
     <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="ObjectDataSource1" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" />
         <EditRowStyle BackColor="#2461BF" />
@@ -22,5 +23,6 @@
             <asp:SessionParameter DefaultValue="0" Name="studentId" SessionField="UserId" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:Label ID="LbNoClasses" runat="server"></asp:Label>
 </asp:Content>
 
