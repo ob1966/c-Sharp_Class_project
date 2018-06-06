@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Classes" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Classes.aspx.cs" Inherits="Classes" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="ProjectCSS.css" rel="stylesheet" type="text/css" />
 </asp:Content>
